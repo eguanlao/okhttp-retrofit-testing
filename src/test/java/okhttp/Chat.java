@@ -7,7 +7,6 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,10 +14,11 @@ class Chat {
 
     private final OkHttpClient client = new OkHttpClient();
     private final HttpUrl baseUrl;
-    private final List<String> messages = Collections.synchronizedList(new ArrayList<>());
+    private final List<String> messages;
 
     Chat(HttpUrl baseUrl) {
         this.baseUrl = baseUrl;
+        messages = new ArrayList<>();
     }
 
     void loadMore() throws IOException {
